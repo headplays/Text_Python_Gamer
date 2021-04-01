@@ -41,7 +41,7 @@ class barbarian (object):
     loot = random.randint(0,2)
 
 class bat (object):
-    name = "bat"
+    name = "Bat"
     health = 25
     strength = 5
     defense = 5
@@ -91,5 +91,11 @@ def heroselection():
         time.sleep(1)
         heroselection()
 
+def enemyselect(witch,barbarian,bat)
+    enemyList = [witch,barbarian,bat]
+    enemyChoice = (random.choice(enemyList))
+    enemy = enemyList[enemyChoice]
+    return ememy
 
-heroselection()
+
+enemyselect(witch,barbarian,bat)
