@@ -57,32 +57,39 @@ def heroselection():
     if selection.lower().strip()== "1":
         character = warrior
         print ("You have selected warrior. Your stats are:")
+        time.sleep(1)
         print ("Health: ", character.health)
         print ("Strength: ", character.strength)
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
+        time.sleep(5)
         return character
     
     elif selection.lower().strip() == "2":
         character == mage
         print ("You have selected mage. Your stats are:")
+        time.sleep(1)
         print ("Health: ", character.health)
         print ("Strength: ", character.strength)
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
+        time.sleep(5)
         return character
     
     elif selection.lower().strip() == "3":
         character == tank
         print ("You have selected tank. Your stats are:")
+        time.sleep(1)
         print ("Health: ", character.health)
         print ("Strength: ", character.strength)
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
+        time.sleep(5)
         return character
     else:
-    print ("Select by pressing 1, 2 or 3")
-    heroselection()
+        print ("Select by pressing 1, 2 or 3")
+        time.sleep(1)
+        heroselection()
 
 
 heroselection()
