@@ -1,0 +1,88 @@
+
+#Imports
+import random
+import time
+import os
+
+#player and NPC classes
+
+class warrior (object):
+    health = 150
+    strength = 10
+    defense = 10
+    magic = 1
+
+class mage (object): 
+    health = 100
+    strength = 5
+    defense = 5
+    magic = 10
+
+class tank (object):
+    health = 200
+    strength = 5
+    defense = 5
+    magic = 1
+
+class witch (object):
+    name = "Witch"
+    health = 50
+    strength = 2
+    defense = 2
+    magic = 5
+    loot = random.randint(0,1)
+
+class barbarian (object):
+    name = "Barbarian"
+    health = 75
+    strength = 5
+    defense = 2
+    magic = 1
+    loot = random.randint(0,2)
+
+class bat (object):
+    name = "bat"
+    health = 25
+    strength = 5
+    defense = 5
+    magic = 1
+    loot = random.randint(0,3)
+
+
+
+
+def heroselection():
+    print ("Choose your character!")
+    selection = input("1. Warrior \n2 Mage \n3 Tank \n")
+    if selection.lower().strip()== "1":
+        character = warrior
+        print ("You have selected warrior. Your stats are:")
+        print ("Health: ", character.health)
+        print ("Strength: ", character.strength)
+        print ("Defense: ", character.defense)
+        print ("Magic: ", character.magic)
+        return character
+    
+    elif selection.lower().strip() == "2":
+        character == mage
+        print ("You have selected mage. Your stats are:")
+        print ("Health: ", character.health)
+        print ("Strength: ", character.strength)
+        print ("Defense: ", character.defense)
+        print ("Magic: ", character.magic)
+        return character
+    
+    elif selection.lower().strip() == "3":
+        character == tank
+        print ("You have selected tank. Your stats are:")
+        print ("Health: ", character.health)
+        print ("Strength: ", character.strength)
+        print ("Defense: ", character.defense)
+        print ("Magic: ", character.magic)
+        return character
+    else:
+    print ("Select by pressing 1, 2 or 3")
+    heroselection()
+
+
+heroselection()
