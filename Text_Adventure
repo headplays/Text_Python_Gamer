@@ -106,7 +106,16 @@ def loot():
 def battle():
     mob = enemyselect(witch,barbarian,bat)
     print ("A ", mob.name, "has appeared")
+    time.sleep(1)
+    print ("You have 3 options")
+    while mob.health > 0 :
+        answer = input("1. Strength attack\n2. Magic\n3 Run")
 
+        if answer.lower().strip() == "1":
+            print ("You attack the ", mob.name, "with your strength attack")
+            damage = random.randint(5,10)
+            mob.health = mob.health - damage
+            print ("You do", damage, "damage to the", mob.name)
+            time.sleep(1)
+            print ("The ", mob.name, "has ", mob.health, "health")
 
-
-battle()
