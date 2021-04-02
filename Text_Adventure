@@ -91,11 +91,22 @@ def heroselection():
         time.sleep(1)
         heroselection()
 
-def enemyselect(witch,barbarian,bat)
-    enemyList = [witch,barbarian,bat]
-    enemyChoice = (random.choice(enemyList))
-    enemy = enemyList[enemyChoice]
-    return ememy
+def enemyselect(witch,barbarian,bat):
+    enemyList = [witch,barbarian,]
+    chance = random.randint(0,2)
+    enemy = enemyList[chance]
+    return enemy
+
+def loot():
+    loot = ["Coins", "Strength Potion", "Defense Potion", "Wand"]
+    lootChance = random.randint(0,3)
+    lootDrop = loot[lootChance]
+    return lootDrop
+
+def battle():
+    mob = enemyselect(witch,barbarian,bat)
+    print ("A ", mob.name, "has appeared")
 
 
-enemyselect(witch,barbarian,bat)
+
+battle()
