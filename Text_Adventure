@@ -9,7 +9,7 @@ import os
 class warrior (object):
     health = 150
     strength = 10
-    defense = 10
+    defense = 5
     magic = 1
 
 class mage (object): 
@@ -26,27 +26,24 @@ class tank (object):
 
 class witch (object):
     name = "Witch"
-    health = 50
-    strength = 2
+    health = 25
+    strength = 10
     defense = 2
-    magic = 5
-    loot = random.randint(0,1)
+    loot = 1
 
 class barbarian (object):
     name = "Barbarian"
     health = 75
     strength = 5
     defense = 2
-    magic = 1
-    loot = random.randint(0,2)
+    loot = 2
 
 class bat (object):
     name = "Bat"
     health = 25
     strength = 5
     defense = 5
-    magic = 1
-    loot = random.randint(0,3)
+    loot = 3
 
 
 
@@ -62,29 +59,29 @@ def heroselection():
         print ("Strength: ", character.strength)
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
-        time.sleep(5)
+        time.sleep(3)
         return character
     
     elif selection.lower().strip() == "2":
-        character == mage
+        character = mage
         print ("You have selected mage. Your stats are:")
         time.sleep(1)
         print ("Health: ", character.health)
         print ("Strength: ", character.strength)
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
-        time.sleep(5)
+        time.sleep(3)
         return character
     
     elif selection.lower().strip() == "3":
-        character == tank
+        character = tank
         print ("You have selected tank. Your stats are:")
         time.sleep(1)
         print ("Health: ", character.health)
         print ("Strength: ", character.strength)
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
-        time.sleep(5)
+        time.sleep(3)
         return character
     else:
         print ("Select by pressing 1, 2 or 3")
@@ -92,14 +89,14 @@ def heroselection():
         heroselection()
 
 def enemyselect(witch,barbarian,bat):
-    enemyList = [witch,barbarian,]
+    enemyList = [witch,barbarian,bat]
     chance = random.randint(0,2)
-    enemy = enemyList[chance]
-    return enemy
+    mob = enemyList[chance]
+    return mob
 
 def loot():
-    loot = ["Coins", "Strength Potion", "Defense Potion", "Wand"]
-    lootChance = random.randint(0,3)
+    loot = ["Strength Potion", "Defense Potion", "Wand"]
+    lootChance = random.randint(0,2)
     lootDrop = loot[lootChance]
     return lootDrop
 
@@ -109,13 +106,37 @@ def battle():
     time.sleep(1)
     print ("You have 3 options")
     while mob.health > 0 :
-        answer = input("1. Strength attack\n2. Magic\n3 Run")
+        answer = input("1. Strength attack\n2. Magic\n3. Run\n")
 
         if answer.lower().strip() == "1":
             print ("You attack the ", mob.name, "with your strength attack")
-            damage = random.randint(5,10)
-            mob.health = mob.health - damage
-            print ("You do", damage, "damage to the", mob.name)
-            time.sleep(1)
-            print ("The ", mob.name, "has ", mob.health, "health")
+            hitchance = (0,10)
+            if hitchance > 3:
+                mob.health = mob.health - character.strength
+                print ("You hit the enemy. Their health is now ", mob.health)
 
+                if enemy.health > 0:
+                    character.health = character.health - (mob.strength / character.defense)
+                    print ("The ", enemy.name, "attacks you, leaving you with ", character.health) 
+
+                else:
+                    if enemy.name == "Witch":
+                        enemy.health = 25
+                    
+                    if enemy.name == "Barbarian":
+                        enemy.health = 75
+                    
+                    if enemy.name == "Bat":
+                        enemy.health = 25
+
+                    print ("You have defeated ", enemy.name)
+                    time.sleep(1)
+                    print ("It has dropped something")
+                    lootDrop = loot()
+                    print ("You found a ", lootDrop,)
+                    
+                         
+
+heroselection()
+enemyselect(witch,barbarian,bat)
+battle()
