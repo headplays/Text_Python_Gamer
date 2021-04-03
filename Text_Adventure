@@ -104,8 +104,8 @@ def loot():
     return lootDrop
 
 def battle():
-    mob = enemyselect(witch,barbarian,bat)
     character = heroselection()
+    mob = enemyselect(witch,barbarian,bat)
     print ("A ", mob.name, "has appeared")
     time.sleep(1)
     print ("You have 3 options")
@@ -113,7 +113,7 @@ def battle():
         answer = input("1. Strength attack\n2. Magic\n3. Run\n")
 
         if answer.lower().strip() == "1":
-            character = character
+
             print ("You attack the ", mob.name, "with your strength attack")
             hitchance = random.randint(1,10)
             if hitchance > 3:
