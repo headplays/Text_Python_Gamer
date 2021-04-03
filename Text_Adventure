@@ -1,4 +1,3 @@
-
 #Imports
 import random
 import time
@@ -7,18 +6,21 @@ import os
 #player and NPC classes
 
 class warrior (object):
+    name = "Warrior"
     health = 150
     strength = 10
     defense = 5
     magic = 1
 
 class mage (object): 
+    name = "Mage"
     health = 100
     strength = 5
     defense = 5
     magic = 10
 
 class tank (object):
+    name = "Tank"
     health = 200
     strength = 5
     defense = 5
@@ -60,7 +62,7 @@ def heroselection():
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
         time.sleep(3)
-        return character
+        character == warrior
     
     elif selection.lower().strip() == "2":
         character = mage
@@ -71,7 +73,7 @@ def heroselection():
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
         time.sleep(3)
-        return character
+        character == mage
     
     elif selection.lower().strip() == "3":
         character = tank
@@ -82,7 +84,8 @@ def heroselection():
         print ("Defense: ", character.defense)
         print ("Magic: ", character.magic)
         time.sleep(3)
-        return character
+        character == tank
+
     else:
         print ("Select by pressing 1, 2 or 3")
         time.sleep(1)
@@ -102,6 +105,7 @@ def loot():
 
 def battle():
     mob = enemyselect(witch,barbarian,bat)
+    character = heroselection()
     print ("A ", mob.name, "has appeared")
     time.sleep(1)
     print ("You have 3 options")
@@ -109,34 +113,40 @@ def battle():
         answer = input("1. Strength attack\n2. Magic\n3. Run\n")
 
         if answer.lower().strip() == "1":
+            character = character
             print ("You attack the ", mob.name, "with your strength attack")
-            hitchance = (0,10)
+            hitchance = random.randint(1,10)
             if hitchance > 3:
                 mob.health = mob.health - character.strength
                 print ("You hit the enemy. Their health is now ", mob.health)
 
-                if enemy.health > 0:
+                if mob.health > 0:
                     character.health = character.health - (mob.strength / character.defense)
-                    print ("The ", enemy.name, "attacks you, leaving you with ", character.health) 
+                    print ("The ", mob.name, "attacks you, leaving you with ", character.health) 
 
                 else:
-                    if enemy.name == "Witch":
-                        enemy.health = 25
+                    if mob.name == "Witch":
+                        mob.health = 25
                     
-                    if enemy.name == "Barbarian":
-                        enemy.health = 75
+                    elif mob.name == "Barbarian":
+                        mob.health = 75
                     
-                    if enemy.name == "Bat":
-                        enemy.health = 25
+                    elif mob.name == "Bat":
+                        mob.health = 25
 
-                    print ("You have defeated ", enemy.name)
+                    print ("You have defeated ", mob.name)
                     time.sleep(1)
                     print ("It has dropped something")
                     lootDrop = loot()
                     print ("You found a ", lootDrop,)
-                    
+                    break
+            
+            else:
+                print ("You miss the enemy")
+                print ("The ", mob.name, "deals critical damage to you")
+                character.health = character.health - mob.strength
+                print ("You have ", character.health, "health remember")
                          
 
-heroselection()
-enemyselect(witch,barbarian,bat)
+
 battle()
