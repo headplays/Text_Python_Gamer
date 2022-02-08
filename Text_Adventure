@@ -55,6 +55,7 @@ def heroselection():
     selection = input("1. Warrior \n2 Mage \n3 Tank \n")
     if selection.lower().strip()== "1":
         character = warrior
+        class = warrior
         print ("You have selected warrior. Your stats are:")
         time.sleep(1)
         print ("Health: ", character.health)
@@ -66,6 +67,7 @@ def heroselection():
     
     elif selection.lower().strip() == "2":
         character = mage
+        class = mage
         print ("You have selected mage. Your stats are:")
         time.sleep(1)
         print ("Health: ", character.health)
@@ -77,6 +79,7 @@ def heroselection():
     
     elif selection.lower().strip() == "3":
         character = tank
+        class = tank
         print ("You have selected tank. Your stats are:")
         time.sleep(1)
         print ("Health: ", character.health)
